@@ -2,12 +2,12 @@ const Product = require("../models/Product");
 
 exports.createProduct = async (req, res) => {
   try {
-    const imageUrls = req.files.map((file) => file.path);
+    const imageUrls = req.files.map((file) => file.path)||[];
     const product = await Product.create({
       ...req.body,
       images: imageUrls,
     });
-    res.status(201).json(product);
+    res.status(201).json({message:'Product created successfully.',product});
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
