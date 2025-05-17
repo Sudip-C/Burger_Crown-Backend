@@ -6,7 +6,7 @@ const orderItemSchema = new mongoose.Schema({
 });
 
 const orderSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'BUser' },
   items: [orderItemSchema],
   total: { type: Number, required: true },
   status: {
@@ -16,7 +16,7 @@ const orderSchema = new mongoose.Schema({
   },
   deliveryPartner: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'BUser',
     default: null
   }
 }, { timestamps: true });
